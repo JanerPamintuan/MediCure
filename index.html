@@ -4,36 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MediCure</title>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
-body{
-    margin:0;
-    font-family:Poppins,sans-serif;
-    background:#f4f7f6;
-    transition:0.4s;
+:root {
+  --green-dark: #1b5e20;
+  --green-mid: #2e7d32;
+  --green-light: #4caf50;
+  --green-pale: #e8f5e9;
+  --green-soft: #c8e6c9;
+  --accent: #a5d6a7;
+  --text: #1a2e1b;
+  --text-muted: #4a6b4c;
+  --bg: #f2f7f2;
+  --card-bg: #ffffff;
+  --border: #d4e8d4;
+  --shadow: 0 4px 24px rgba(27,94,32,0.08);
+  --shadow-hover: 0 12px 40px rgba(27,94,32,0.18);
+  --nav-bg: #ffffff;
+  --footer-bg: #1b5e20;
+  --input-bg: #ffffff;
+  --med-btn: #e8f5e9;
+  --med-btn-hover: #c8e6c9;
+  --detail-bg: #f4fbf4;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.35s cubic-bezier(.4,0,.2,1);
 }
 
-/* REMOVE LINK UNDERLINES */
-
-a{
-    text-decoration:none;
-    color:inherit;
+.dark {
+  --bg: #141c14;
+  --card-bg: #1e2a1e;
+  --text: #e8f5e9;
+  --text-muted: #a5c8a7;
+  --border: #2e4a2e;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,0.45);
+  --nav-bg: #111a11;
+  --input-bg: #1e2a1e;
+  --med-btn: #2e4a2e;
+  --med-btn-hover: #3a5e3a;
+  --detail-bg: #1a2a1a;
 }
 
-/* HEADER */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-header{
-    background:linear-gradient(to right,#1b5e20,#4caf50);
-    text-align:center;
-    padding:20px;
-    color:white;
-    position:relative;
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+  min-height: 100vh;
 }
 
-/* LOGO */
+a { text-decoration: none; color: inherit; }
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 55%, var(--green-light) 100%);
+  padding: 28px 24px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .logo{
     width:400px;
@@ -42,464 +84,757 @@ header{
     border-radius:30px;
 }
 
-/* TOGGLE BUTTON */
-
-.dark-btn{
-    position:absolute;
-    top:20px;
-    right:20px;
-    width:60px;
-    height:32px;
-    border:none;
-    border-radius:50px;
-    background:white;
-    cursor:pointer;
-    transition:0.4s;
-    display:flex;
-    align-items:center;
-    padding:4px;
-    overflow:hidden;
+.dark-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  padding: 3px;
 }
 
-/* TOGGLE CIRCLE */
-
-.dark-btn::before{
-    content:"☀️";
-    width:24px;
-    height:24px;
-    background:#ffd54f;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.4s;
-    transform:translateX(0);
-    font-size:14px;
+.dark-btn .knob {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
 }
 
-/* NAVIGATION */
-
-nav{
-    background:white;
-    padding:10px;
-    text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    transition:0.4s;
+.dark .dark-btn .knob {
+  transform: translateX(26px);
+  background: #4caf50;
 }
 
-nav button{
-    margin:5px;
-    padding:10px 18px;
-    border:none;
-    border-radius:20px;
-    background:#1b5e20;
-    color:white;
-    cursor:pointer;
-    transition:.3s;
+/* ── NAV ── */
+nav {
+  background: var(--nav-bg);
+  padding: 10px 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: background var(--transition);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
 }
 
-nav button:hover{
-    background:#4caf50;
+nav button {
+  margin: 4px;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
 }
 
-/* SECTION */
-
-.section{
-    display:none;
-    padding:25px;
+nav button:hover,
+nav button.nav-active {
+  background: var(--green-dark);
+  color: #fff;
 }
 
-.active{
-    display:block;
+/* ── SECTIONS ── */
+.section { display: none; padding: 36px 24px 20px; max-width: 1100px; margin: 0 auto; }
+.active { display: block; }
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.9rem;
+  color: var(--green-dark);
+  margin-bottom: 6px;
 }
 
-/* GRID */
+.dark .section-title { color: var(--green-light); }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
 }
 
-/* CARD */
+/* ── GRID ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s ease;
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
-/* HOVER EFFECT (ADDED) */
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
 }
 
-.card h3{
-    margin-top:0;
+.card-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--green-pale);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
 }
 
-/* SEARCH */
+.dark .card-icon { background: #2e4a2e; }
 
-.search-box input{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    margin-bottom:20px;
-    font-family:Poppins,sans-serif;
-    transition:0.4s;
+.card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--green-dark);
+  margin-bottom: 10px;
 }
 
-/* MEDICINE BUTTONS */
+.dark .card h3 { color: var(--green-light); }
 
-.medicine-list button{
-    width:100%;
-    padding:10px;
-    margin-top:8px;
-    border:none;
-    border-radius:10px;
-    background:#e8f5e9;
-    cursor:pointer;
-    transition:0.3s;
+.card p, .card li {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
-.medicine-list button:hover{
-    background:#c8e6c9;
+.card ul { padding-left: 18px; }
+.card ul li { margin-bottom: 6px; }
+
+/* ── BADGE ── */
+.badge {
+  display: inline-block;
+  background: var(--green-pale);
+  color: var(--green-dark);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-/* DETAILS */
+.dark .badge { background: #2e4a2e; color: #a5d6a7; }
 
-#medicineDetails{
-    background:#f9f9f9;
-    padding:15px;
-    border-radius:10px;
-    transition:0.4s;
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 14px 0;
 }
 
-/* MAP */
-
-.map-container{
-    width:100%;
-    height:250px;
-    border-radius:15px;
-    overflow:hidden;
-    margin-top:10px;
+/* ── HOURS TABLE ── */
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--text-muted);
 }
 
-.map-container iframe{
-    width:100%;
-    height:100%;
-    border:0;
+.hours-row:last-child { border-bottom: none; }
+.hours-row .day { font-weight: 600; color: var(--text); }
+.hours-open { color: #2e7d32; font-weight: 600; }
+.hours-closed { color: #c62828; font-weight: 600; }
+
+/* ── MEDICINE ── */
+.search-box input {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  transition: var(--transition);
+  outline: none;
 }
 
-/* FOOTER */
+.search-box input:focus { border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(76,175,80,0.15); }
 
-footer{
-    margin-top:20%;
-    background:#1b5e20;
-    color:white;
-    text-align:center;
-    padding:15px;
+.medicine-list { display: flex; flex-direction: column; gap: 6px; max-height: 380px; overflow-y: auto; padding-right: 4px; }
+
+.medicine-list::-webkit-scrollbar { width: 5px; }
+.medicine-list::-webkit-scrollbar-thumb { background: var(--green-soft); border-radius: 10px; }
+
+.medicine-list button {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--med-btn);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
 }
 
-/* DARK MODE */
+.medicine-list button:hover { background: var(--med-btn-hover); border-color: var(--green-light); }
+.medicine-list button.selected { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
 
-.dark{
-    background:#535353;
-    color:white;
+#medicineDetails {
+  background: var(--detail-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  min-height: 120px;
+  transition: var(--transition);
 }
 
-.dark nav{
-    background:#1e1e1e;
+.med-detail-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  color: var(--green-dark);
+  margin-bottom: 8px;
 }
 
-.dark .card{
-    background:#1e1e1e;
+.dark .med-detail-name { color: var(--green-light); }
+.med-detail-text { line-height: 1.7; }
+
+/* ── FAQ ── */
+.faq-q {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text);
+  margin-bottom: 6px;
 }
 
-.dark #medicineDetails{
-    background:#2a2a2a;
+.faq-a {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.65;
 }
 
-.dark .search-box input{
-    background:#1e1e1e;
-    color:white;
-    border:1px solid #555;
+/* ── TIPS ── */
+.tip-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: var(--green-soft);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.dark .tip-number { color: #3a5e3a; }
+
+/* ── MAP ── */
+.map-container {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: 14px;
+  border: 1px solid var(--border);
 }
 
-.dark .medicine-list button{
-    background:#2e7d32;
-    color:white;
+.map-container iframe { width: 100%; height: 100%; border: 0; }
+
+/* ── CONTACT INFO ── */
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.dark .medicine-list button:hover{
-    background:#43a047;
+.contact-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--green-pale);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
 }
 
-.dark footer{
-    background:#0d3b12;
+.dark .contact-icon { background: #2e4a2e; }
+
+.contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+.contact-value { font-size: 0.92rem; font-weight: 500; color: var(--text); }
+
+/* ── HOME HERO ── */
+.hero-band {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* DARK BUTTON ANIMATION */
-
-.dark .dark-btn{
-    background:#333;
+.hero-band::after {
+  content: '✚';
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 6rem;
+  opacity: 0.07;
+  font-family: sans-serif;
 }
 
-.dark .dark-btn::before{
-    content:"🌙";
-    transform:translateX(28px);
-    background:#555;
+.hero-band h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  margin-bottom: 8px;
 }
 
-/* MOBILE */
+.hero-band p {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  max-width: 480px;
+  line-height: 1.6;
+}
 
-@media(max-width:768px){
+/* ── FOOTER ── */
+footer {
+  background: var(--footer-bg);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.82rem;
+  margin-top: 40px;
+  transition: background var(--transition);
+}
 
-    .logo{
-        width:250px;
-    }
+.dark footer { background: #0d1f0d; }
 
-    nav button{
-        width:90%;
-    }
+footer span { color: #a5d6a7; font-weight: 600; }
 
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .section { padding: 24px 16px; }
+  .logo-text { font-size: 1.7rem; }
+  .dark-btn { width: 46px; height: 26px; }
+  .dark-btn .knob { width: 20px; height: 20px; font-size: 11px; }
+  .dark .dark-btn .knob { transform: translateX(20px); }
+  nav button { padding: 8px 12px; font-size: 0.8rem; }
 }
 
 </style>
 </head>
-
 <body>
 
 <header>
-
 <img src="MediCure.png" alt="MediCure Logo" class="logo">
-
-<button class="dark-btn" onclick="toggleDarkMode()"></button>
-
+  <div class="header-inner">
+    <div>
+      
+    </div>
+    <button class="dark-btn" onclick="toggleDarkMode()" title="Toggle dark mode">
+      <div class="knob" id="knobIcon">☀️</div>
+    </button>
+  </div>
 </header>
 
 <nav>
-
-<button onclick="openSection('home')">Home</button>
-<button onclick="openSection('about')">About</button>
-<button onclick="openSection('medicine')">Medicine</button>
-<button onclick="openSection('tips')">Health Tips</button>
-<button onclick="openSection('faq')">FAQ</button>
-<button onclick="openSection('contact')">Contact</button>
-
+  <button onclick="openSection('home')" class="nav-active" id="nav-home">🏠 Home</button>
+  <button onclick="openSection('about')" id="nav-about">ℹ️ About</button>
+  <button onclick="openSection('medicine')" id="nav-medicine">💊 Medicine</button>
+  <button onclick="openSection('tips')" id="nav-tips">💡 Health Tips</button>
+  <button onclick="openSection('faq')" id="nav-faq">❓ FAQ</button>
+  <button onclick="openSection('contact')" id="nav-contact">📞 Contact</button>
 </nav>
 
+<!-- ══ HOME ══ -->
 <div class="section active" id="home">
+  <div class="hero-band">
+    <h2>Welcome to MediCure!</h2>
+    <p>Your campus health trusted infirmary at PSAU. Access medicine guides, clinic hours, health tips, and emergency information — all in one place.</p>
+  </div>
 
-<h2>Welcome to MediCure!</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="card-icon">🏥</div>
+      <div class="badge">Clinic Info</div>
+      <h3>Clinic Services</h3>
+      <p>The PSAU Infirmary provides on-campus medical consultations, first aid, and health documentation for students, faculty, and staff.</p>
+      <hr class="divider">
+      <div class="hours-row"><span class="day">Mon – Thu</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Fri – Sun</span><span class="hours-closed">Closed</span></div>
+    </div>
 
-<div class="card">
-<h3>Clinic Information</h3>
-<p>Check clinic services and schedules.</p>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="badge">Daily Tips</div>
+      <h3>Quick Health Tips</h3>
+      <ul>
+        <li>Eat balanced whole foods — more vegetables, fruits, and lean proteins.</li>
+        <li>Drink at least 8 glasses of water every day.</li>
+        <li>Get 7–8 hours of sleep each night.</li>
+        <li>Wash hands frequently to prevent infection.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🚨</div>
+      <div class="badge">Emergency</div>
+      <h3>When to Seek Help</h3>
+      <ul>
+        <li>Chest pain, difficulty breathing, or fainting.</li>
+        <li>High fever (38.5°C / 101.3°F or above).</li>
+        <li>Severe allergic reaction or swelling.</li>
+        <li>Deep wounds that won't stop bleeding.</li>
+      </ul>
+      <hr class="divider">
+      <p style="font-size:0.82rem;">Emergency: <strong>0912-345-6789</strong></p>
+    </div>
+
+  </div>
 </div>
 
-<div class="card">
-<h3>Health Tips</h3>
-<p>
-•Eat Balanced Whole Foods: Prioritize vegetables, fruits, and lean proteins, reducing processed foods to lower disease risk.
-<br><br>
-•Stay Hydrated: Drink sufficient water throughout the day to support cellular function and maintain energy levels.
-</p>
-</div>
-
-<div class="card">
-<h3>Emergency</h3>
-<p>Know when to seek medical help.</p>
-</div>
-
-</div>
-
-</div>
-
+<!-- ══ ABOUT ══ -->
 <div class="section" id="about">
+  <div class="section-title">About the Clinic</div>
+  <div class="section-sub">Everything you need to know about the PSAU Infirmary.</div>
 
-<h2>About the Clinic</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="card-icon">🏫</div>
+      <div class="badge">Overview</div>
+      <h3>Who We Are</h3>
+      <p>The MediCure Clinic is the official infirmary of Pampanga State Agricultural University (PSAU), located in Magalang, Pampanga. We are dedicated to providing immediate and accessible healthcare to the entire PSAU community.</p>
+    </div>
 
-<div class="card">
-<h3>Overview</h3>
-<p>Learn more about our clinic.</p>
+    <div class="card">
+      <div class="card-icon">⚕️</div>
+      <div class="badge">Services</div>
+      <h3>What We Offer</h3>
+      <ul>
+        <li><strong>Basic Medical Care</strong> — On-campus consultations and first aid for the university community.</li>
+        <li><strong>Health Documentation</strong> — Medical certificates, health records, and referrals managed by our staff.</li>
+        <li><strong>Community Initiatives</strong> — Blood donation drives and campus health promotion programs.</li>
+        <li><strong>Emergency Response</strong> — Immediate care for on-campus emergencies and accidents.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <div class="badge">Schedule</div>
+      <h3>Clinic Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="hours-closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="hours-closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="hours-closed">Closed</span></div>
+    </div>
+
+  </div>
 </div>
 
-<div class="card">
-<h3>Services</h3>
-<p>Medical services available for patients.</p>
-</div>
-
-<div class="card">
-<h3>Clinic Hours</h3>
-<p>Monday - Friday | 8:00 AM - 5:00 PM</p>
-</div>
-
-</div>
-
-</div>
-
+<!-- ══ MEDICINE ══ -->
 <div class="section" id="medicine">
+  <div class="section-title">Medicine Guide</div>
+  <div class="section-sub">Search and learn about medicines available at the clinic.</div>
 
-<h2>Medicine Guide</h2>
+  <div class="search-box">
+    <input type="text" placeholder="🔍  Search medicine by name..." onkeyup="searchMedicine(this.value)">
+  </div>
 
-<div class="search-box">
-<input type="text" placeholder="Search medicine..." onkeyup="searchMedicine(this.value)">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>Available Medicines</h3>
+      <div class="medicine-list" id="medicineList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Medicine Details</h3>
+      <div id="medicineDetails">
+        <p style="color:var(--text-muted); font-size:0.9rem;">👈 Select a medicine from the list to view its details and usage instructions.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="grid">
-
-<div class="card">
-<h3>Medicine List</h3>
-<div class="medicine-list" id="medicineList"></div>
-</div>
-
-<div class="card">
-<h3>Medicine Details</h3>
-<div id="medicineDetails">
-Select a medicine to see details.
-</div>
-</div>
-
-</div>
-
-</div>
-
+<!-- ══ TIPS ══ -->
 <div class="section" id="tips">
+  <div class="section-title">Health Tips</div>
+  <div class="section-sub">Simple habits that make a big difference to your wellbeing.</div>
 
-<h2>Health Tips</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="tip-number">01</div>
+      <div class="card-icon">💧</div>
+      <h3>Stay Hydrated</h3>
+      <p>Drink at least 8 glasses (2 liters) of water daily. Proper hydration supports kidney function, improves energy, and keeps your skin healthy. Carry a reusable water bottle with you on campus.</p>
+    </div>
 
-<div class="card">Drink enough water every day.</div>
-<div class="card">Take medicines correctly.</div>
-<div class="card">Exercise and get proper sleep.</div>
+    <div class="card">
+      <div class="tip-number">02</div>
+      <div class="card-icon">💊</div>
+      <h3>Take Medicines Correctly</h3>
+      <p>Always follow the prescribed dosage and timing. Never skip doses of antibiotics even if you feel better. Store medicines in a cool, dry place away from direct sunlight.</p>
+    </div>
 
+    <div class="card">
+      <div class="tip-number">03</div>
+      <div class="card-icon">🏃</div>
+      <h3>Exercise Regularly</h3>
+      <p>Aim for at least 30 minutes of moderate physical activity most days. Walking, jogging, or stretching between classes all count. Regular exercise reduces stress and boosts immunity.</p>
+    </div>
+
+    <div class="card">
+      <div class="tip-number">04</div>
+      <div class="card-icon">😴</div>
+      <h3>Get Proper Sleep</h3>
+      <p>Students need 7–9 hours of sleep per night. Poor sleep weakens your immune system and impairs concentration. Maintain a consistent sleep schedule, even on weekends.</p>
+    </div>
+
+    <div class="card">
+      <div class="tip-number">05</div>
+      <div class="card-icon">🥗</div>
+      <h3>Eat Balanced Meals</h3>
+      <p>Fill half your plate with vegetables and fruits, a quarter with lean protein, and a quarter with whole grains. Limit ultra-processed foods, sugary drinks, and excessive salt.</p>
+    </div>
+
+    <div class="card">
+      <div class="tip-number">06</div>
+      <div class="card-icon">🧼</div>
+      <h3>Practice Good Hygiene</h3>
+      <p>Wash hands with soap for at least 20 seconds before eating and after using the restroom. Cover your mouth when coughing or sneezing to prevent spreading illness on campus.</p>
+    </div>
+
+  </div>
 </div>
 
-</div>
-
+<!-- ══ FAQ ══ -->
 <div class="section" id="faq">
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="section-sub">Common questions about the clinic and your health.</div>
 
-<h2>Frequently Asked Questions</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="card-icon">🆘</div>
+      <div class="badge">Quick Help</div>
+      <h3>What should I do in an emergency?</h3>
+      <div class="faq-q">Q: I feel very ill or injured on campus. What do I do?</div>
+      <p class="faq-a">Go directly to the PSAU Infirmary or call <strong>0912-345-6789</strong>. For life-threatening emergencies, call the national emergency line (911). Inform your teacher or a nearby staff member immediately.</p>
+      <hr class="divider">
+      <div class="faq-q">Q: Does the clinic handle dental emergencies?</div>
+      <p class="faq-a">The clinic handles basic first aid for dental pain, but for full dental care, students are referred to an external dentist.</p>
+    </div>
 
-<div class="card">
-<h3>Common Questions</h3>
-<p>Answers to patient concerns.</p>
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <div class="badge">Medicine Use</div>
+      <h3>Proper Use of Medicine</h3>
+      <div class="faq-q">Q: Can I get medicines from the clinic for free?</div>
+      <p class="faq-a">Yes, the infirmary provides basic medicines to enrolled PSAU students and staff at no charge, subject to availability.</p>
+      <hr class="divider">
+      <div class="faq-q">Q: Can I take leftover antibiotics for a new illness?</div>
+      <p class="faq-a">No. Always consult a doctor before taking antibiotics. Using the wrong antibiotic — or not finishing a full course — can make bacteria resistant to treatment.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <div class="badge">Warnings</div>
+      <h3>Medicine Warnings</h3>
+      <div class="faq-q">Q: What are common medicine side effects to watch for?</div>
+      <p class="faq-a">Watch for rashes, difficulty breathing, severe stomach pain, or unusual swelling. These may indicate an allergic reaction — stop the medicine and seek help immediately.</p>
+      <hr class="divider">
+      <div class="faq-q">Q: Is it safe to mix over-the-counter medicines?</div>
+      <p class="faq-a">Not always. Some combinations (e.g., Ibuprofen + Mefenamic Acid) can increase the risk of stomach bleeding. Always consult the clinic before combining medicines.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🩺</div>
+      <div class="badge">Seek Help</div>
+      <h3>When To Seek Medical Help</h3>
+      <div class="faq-q">Q: My fever has lasted 3 days. Should I see a doctor?</div>
+      <p class="faq-a">Yes. A fever lasting more than 3 days, or one that is 38.5°C or higher, warrants a medical consultation. It could be a sign of infection requiring proper treatment.</p>
+      <hr class="divider">
+      <div class="faq-q">Q: I've had diarrhea for more than a day. What should I do?</div>
+      <p class="faq-a">Visit the clinic if diarrhea lasts more than 24 hours, is accompanied by blood, or if you feel very weak. Stay hydrated with water or oral rehydration salts (ORS) in the meantime.</p>
+    </div>
+
+  </div>
 </div>
 
-<div class="card">
-<h3>Medicine Warnings</h3>
-<p>Read instructions carefully before use.</p>
-</div>
-
-<div class="card">
-<h3>Usage Guide</h3>
-<p>Learn how to take medicines properly.</p>
-</div>
-
-</div>
-
-</div>
-
+<!-- ══ CONTACT ══ -->
 <div class="section" id="contact">
+  <div class="section-title">Contact Information</div>
+  <div class="section-sub">Reach us or go to our location inside the campus.</div>
 
-<h2>Contact Information</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Location</h3>
+      <p>PSAU Infirmary, located inside <strong>Pampanga State Agricultural University</strong>, Magalang, Pampanga.</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=PSAU+Infirmary+Magalang+Pampanga&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
 
-<div class="card">
-<h3>Location</h3>
-<p>PSAU Infirmary, Magalang, Pampanga located inside the Pampanga State Agricultural University</p>
+    <div class="card">
+      <div class="card-icon">📞</div>
+      <h3>Contact To Connect With Us</h3>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Mobile / Emergency</div>
+          <div class="contact-value">0912-345-6789</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">MediCure@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏛️</div>
+        <div>
+          <div class="contact-label">University</div>
+          <div class="contact-value">Pampanga State Agricultural University</div>
+        </div>
+      </div>
+    </div>
 
-<div class="map-container">
-<iframe src="https://www.google.com/maps?q=PSAU+Infirmary+Magalang+Pampanga&output=embed"></iframe>
-</div>
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <h3>Office Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="hours-closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Sat & Sun</span><span class="hours-closed">Closed</span></div>
+      <hr class="divider">
+      <p style="font-size:0.82rem; color:var(--text-muted);">Walk-ins welcome during open hours. No appointment needed for basic consultations.</p>
+    </div>
 
-</div>
-
-<div class="card">
-<h3>Phone & Email</h3>
-<p>0912-345-6789<br>medicure@email.com</p>
-</div>
-
-<div class="card">
-<h3>Office Hours</h3>
-<p>8:00 AM - 5:00 PM</p>
-</div>
-
-</div>
-
+  </div>
 </div>
 
 <footer>
-© 2026 MediCure Clinic System
+  © 2026 <span>MediCure</span> Clinic System &nbsp;·&nbsp; PSAU Infirmary, Magalang, Pampanga
 </footer>
 
 <script>
-
 const medicineData = {
-"Ambroxol":"Used for cough with mucus and helps clear airways.",
-"Amoxicillin":"Antibiotic medicine. Finish the full dose.",
-"Band Aid":"Used to cover small wounds and cuts.",
-"Betadine":"Used to clean wounds and prevent infection.",
-"Biogesic":"Used for fever and pain.",
-"Efficascent Oil":"Used for muscle pain and body aches.",
-"Losartan Potassium":"Used for high blood pressure.",
-"Medical Tape":"Used to secure bandages and dressings.",
-"Medicol":"Used for headache and body pain.",
-"Mefenamic Acid":"Used for short-term relief of pain including muscle pain and menstrual cramps.",
-"Neozep":"Used for relief of cold symptoms such as headache, fever, and clogged nose.",
-"Ibuprofen":"Used for inflammation and pain relief.",
-"Cetirizine":"Used for allergies and itching.",
-"Loperamide":"Used for diarrhea.",
-"Antihistamine":"Used for allergic reactions."
+  "Ambroxol":       { use: "Used for cough with mucus. Helps loosen and clear mucus from the airways.", warning: "Take with food. Not recommended for children under 2 without doctor's advice.", category: "Respiratory" },
+  "Amoxicillin":    { use: "Antibiotic used to treat bacterial infections such as ear, nose, throat, and urinary tract infections.", warning: "Always finish the full course. Do not stop even if you feel better.", category: "Antibiotic" },
+  "Band Aid":       { use: "Used to cover and protect small wounds, cuts, and blisters from dirt and bacteria.", warning: "Change daily or when wet/dirty. Clean wound before applying.", category: "First Aid" },
+  "Betadine":       { use: "Antiseptic solution used to clean wounds and prevent infection in cuts, scrapes, and burns.", warning: "Do not use inside deep wounds. Avoid contact with eyes.", category: "First Aid" },
+  "Biogesic":       { use: "Used for relief of mild to moderate fever and pain such as headache and toothache. Contains Paracetamol.", warning: "Do not exceed 4g (8 tablets) per day. Avoid with alcohol.", category: "Pain / Fever" },
+  "Cetirizine":     { use: "Antihistamine used to relieve allergy symptoms such as runny nose, sneezing, and itchy eyes.", warning: "May cause drowsiness. Avoid driving or operating machinery after taking.", category: "Allergy" },
+  "Efficascent Oil":{ use: "Topical oil used for muscle pain, body aches, arthritis, and minor sprains.", warning: "For external use only. Avoid contact with eyes and open wounds.", category: "Pain Relief" },
+  "Ibuprofen":      { use: "NSAID used to relieve pain, reduce fever, and reduce inflammation. Common for headache and muscle pain.", warning: "Take with food to avoid stomach irritation. Do not combine with Mefenamic Acid.", category: "Pain / Anti-inflammatory" },
+  "Loperamide":     { use: "Used to treat acute and chronic diarrhea by slowing down gut movement.", warning: "Do not use if diarrhea contains blood. Seek help if symptoms persist beyond 2 days.", category: "Digestive" },
+  "Losartan Potassium": { use: "Used to treat high blood pressure (hypertension) and protect kidneys in diabetic patients.", warning: "Requires a doctor's prescription. Do not stop taking without consulting your doctor.", category: "Cardiovascular" },
+  "Medical Tape":   { use: "Used to secure bandages, gauze, and dressings in place over wounds.", warning: "Some people are sensitive to adhesive. Use hypoallergenic tape if skin irritation occurs.", category: "First Aid" },
+  "Medicol":        { use: "Used for headache, toothache, and mild body pain. Contains Ibuprofen.", warning: "Take with food. Do not take with other NSAIDs. Avoid in people with stomach ulcers.", category: "Pain Relief" },
+  "Mefenamic Acid": { use: "NSAID used for short-term relief of mild to moderate pain, including menstrual cramps and muscle pain.", warning: "Take with food. Do not combine with Ibuprofen. Use for no more than 7 days.", category: "Pain Relief" },
+  "Neozep":         { use: "Used to relieve symptoms of colds and flu: headache, fever, runny nose, and nasal congestion.", warning: "May cause drowsiness. Contains antihistamine — avoid operating heavy machinery.", category: "Cold & Flu" },
+  "Antihistamine":  { use: "Used to treat and prevent allergic reactions including rashes, hives, and itching.", warning: "Causes drowsiness in most patients. Avoid alcohol while taking this medicine.", category: "Allergy" }
 };
 
-function loadMedicines(){
-let container=document.getElementById("medicineList");
-container.innerHTML="";
-for(let m in medicineData){
-container.innerHTML+=`<button onclick="showMedicine('${m}')">${m}</button>`;
-}
+const categoryColors = {
+  "Antibiotic": "#fff3e0",
+  "Respiratory": "#e3f2fd",
+  "First Aid": "#fce4ec",
+  "Pain / Fever": "#f3e5f5",
+  "Pain Relief": "#ede7f6",
+  "Pain / Anti-inflammatory": "#ede7f6",
+  "Allergy": "#e8f5e9",
+  "Digestive": "#fff8e1",
+  "Cardiovascular": "#ffebee",
+  "Cold & Flu": "#e1f5fe"
+};
+
+function loadMedicines(filter = "") {
+  let container = document.getElementById("medicineList");
+  container.innerHTML = "";
+  const entries = Object.entries(medicineData).filter(([name]) =>
+    name.toLowerCase().includes(filter.toLowerCase())
+  );
+  if (entries.length === 0) {
+    container.innerHTML = `<p style="font-size:0.85rem;color:var(--text-muted);padding:10px 0;">No medicines found.</p>`;
+    return;
+  }
+  entries.forEach(([name]) => {
+    const btn = document.createElement("button");
+    btn.textContent = name;
+    btn.onclick = () => showMedicine(name, btn);
+    container.appendChild(btn);
+  });
 }
 
-function showMedicine(name){
-document.getElementById("medicineDetails").innerHTML="<b>"+name+"</b><br><br>"+medicineData[name];
+function showMedicine(name, btn) {
+  document.querySelectorAll(".medicine-list button").forEach(b => b.classList.remove("selected"));
+  if (btn) btn.classList.add("selected");
+  const m = medicineData[name];
+  document.getElementById("medicineDetails").innerHTML = `
+    <div class="med-detail-name">💊 ${name}</div>
+    <span class="badge">${m.category}</span>
+    <hr class="divider">
+    <div class="faq-q">What it's used for:</div>
+    <p class="med-detail-text">${m.use}</p>
+    <hr class="divider">
+    <div class="faq-q">⚠️ Important warnings:</div>
+    <p class="med-detail-text">${m.warning}</p>
+  `;
 }
 
-function searchMedicine(value){
-let container=document.getElementById("medicineList");
-container.innerHTML="";
-for(let m in medicineData){
-if(m.toLowerCase().includes(value.toLowerCase())){
-container.innerHTML+=`<button onclick="showMedicine('${m}')">${m}</button>`;
-}
-}
+function searchMedicine(value) { loadMedicines(value); }
+
+function openSection(id) {
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("nav-active"));
+  document.getElementById("nav-" + id).classList.add("nav-active");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openSection(id){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
-
-function toggleDarkMode(){
-document.body.classList.toggle("dark");
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  document.getElementById("knobIcon").textContent = isDark ? "🌙" : "☀️";
 }
 
 loadMedicines();
-
 </script>
-
 </body>
 </html>
