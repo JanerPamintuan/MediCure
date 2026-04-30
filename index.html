@@ -60,7 +60,6 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── HEADER ── */
 header {
   background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 55%, var(--green-light) 100%);
   padding: 28px 24px 22px;
@@ -69,7 +68,6 @@ header {
   overflow: hidden;
 }
 
-
 .header-inner {
   position: relative;
   display: flex;
@@ -77,11 +75,8 @@ header {
   justify-content: center;
 }
 
-.logo{
-    width:400px;
-    max-width:100%;
-    height:auto;
-    border-radius:30px;
+.logo,.logo1,.logo2,.logo3,.logo4,.logo5,.logo6,.logo7,.logo8,.logo9,.logo10,.logo11,.logo12,.logo13,.logo14,.logo15{
+  width:400px;max-width:100%;height:auto;border-radius:30px;
 }
 
 .dark-btn {
@@ -118,7 +113,6 @@ header {
   background: #4caf50;
 }
 
-/* ── NAV ── */
 nav {
   background: var(--nav-bg);
   padding: 10px 16px;
@@ -152,7 +146,6 @@ nav button.nav-active {
   color: #fff;
 }
 
-/* ── SECTIONS ── */
 .section { display: none; padding: 36px 24px 20px; max-width: 1100px; margin: 0 auto; }
 .active { display: block; }
 
@@ -171,11 +164,9 @@ nav button.nav-active {
   margin-bottom: 28px;
 }
 
-/* ── GRID ── */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
 
-/* ── CARD ── */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -222,7 +213,6 @@ nav button.nav-active {
 .card ul { padding-left: 18px; }
 .card ul li { margin-bottom: 6px; }
 
-/* ── BADGE ── */
 .badge {
   display: inline-block;
   background: var(--green-pale);
@@ -238,14 +228,12 @@ nav button.nav-active {
 
 .dark .badge { background: #2e4a2e; color: #a5d6a7; }
 
-/* ── DIVIDER ── */
 .divider {
   border: none;
   border-top: 1px solid var(--border);
   margin: 14px 0;
 }
 
-/* ── HOURS TABLE ── */
 .hours-row {
   display: flex;
   justify-content: space-between;
@@ -261,7 +249,6 @@ nav button.nav-active {
 .hours-open { color: #2e7d32; font-weight: 600; }
 .hours-closed { color: #c62828; font-weight: 600; }
 
-/* ── MEDICINE ── */
 .search-box input {
   width: 100%;
   padding: 13px 18px;
@@ -322,7 +309,50 @@ nav button.nav-active {
 .dark .med-detail-name { color: var(--green-light); }
 .med-detail-text { line-height: 1.7; }
 
-/* ── FAQ ── */
+.med-image-wrap {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: 12px 0 14px;
+  background: var(--green-pale);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  position: relative;
+}
+
+.dark .med-image-wrap { background: #223322; }
+
+.med-image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.3s ease;
+  padding: 12px;
+  background: transparent;
+}
+
+.med-image-wrap .med-img-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-align: center;
+  width: 100%;
+}
+
+.med-image-wrap .med-img-fallback .fallback-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .faq-q {
   font-weight: 600;
   font-size: 0.92rem;
@@ -336,7 +366,6 @@ nav button.nav-active {
   line-height: 1.65;
 }
 
-/* ── TIPS ── */
 .tip-number {
   font-family: 'DM Serif Display', serif;
   font-size: 2.2rem;
@@ -346,7 +375,6 @@ nav button.nav-active {
 }
 .dark .tip-number { color: #ebeceb; }
 
-/* ── MAP ── */
 .map-container {
   width: 100%;
   height: 240px;
@@ -358,7 +386,6 @@ nav button.nav-active {
 
 .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-/* ── CONTACT INFO ── */
 .contact-item {
   display: flex;
   align-items: flex-start;
@@ -383,7 +410,6 @@ nav button.nav-active {
 .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
 .contact-value { font-size: 0.92rem; font-weight: 500; color: var(--text); }
 
-/* ── HOME HERO ── */
 .hero-band {
   background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
   border-radius: var(--radius);
@@ -418,7 +444,6 @@ nav button.nav-active {
   line-height: 1.6;
 }
 
-/* ── FOOTER ── */
 footer {
   background: var(--footer-bg);
   color: rgba(255,255,255,0.8);
@@ -433,7 +458,6 @@ footer {
 
 footer span { color: #a5d6a7; font-weight: 600; }
 
-/* ── MOBILE ── */
 @media (max-width: 640px) {
   .section { padding: 24px 16px; }
   .logo-text { font-size: 1.7rem; }
@@ -441,6 +465,7 @@ footer span { color: #a5d6a7; font-weight: 600; }
   .dark-btn .knob { width: 20px; height: 20px; font-size: 11px; }
   .dark .dark-btn .knob { transform: translateX(20px); }
   nav button { padding: 8px 12px; font-size: 0.8rem; }
+  .med-image-wrap img { height: 170px; }
 }
 
 </style>
@@ -468,7 +493,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   <button onclick="openSection('contact')" id="nav-contact">Contact</button>
 </nav>
 
-<!-- ══ HOME ══ -->
 <div class="section active" id="home">
   <div class="hero-band">
     <h2>Welcome to MediCure!</h2>
@@ -507,13 +531,12 @@ footer span { color: #a5d6a7; font-weight: 600; }
         <li>Deep wounds that won't stop bleeding.</li>
       </ul>
       <hr class="divider">
-      <p style="font-size:0.82rem;">Emergency: <strong>0912-345-6789</strong></p>
+      <p style="font-size:0.82rem;">Emergency: <strong>0965-876-8974</strong></p>
     </div>
 
   </div>
 </div>
 
-<!-- ══ ABOUT ══ -->
 <div class="section" id="about">
   <div class="section-title">About the Clinic</div>
   <div class="section-sub">Everything you need to know about the PSAU Infirmary.</div>
@@ -552,7 +575,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   </div>
 </div>
 
-<!-- ══ MEDICINE ══ -->
 <div class="section" id="medicine">
   <div class="section-title">Medicine Guide</div>
   <div class="section-sub">Search and learn about medicines available at the clinic.</div>
@@ -563,7 +585,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-icon">📋</div>
       <h3>Available Medicines</h3>
       <div class="medicine-list" id="medicineList"></div>
     </div>
@@ -578,7 +599,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   </div>
 </div>
 
-<!-- ══ TIPS ══ -->
 <div class="section" id="tips">
   <div class="section-title">Health Tips</div>
   <div class="section-sub">Simple habits that make a big difference to your wellbeing.</div>
@@ -624,7 +644,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   </div>
 </div>
 
-<!-- ══ FAQ ══ -->
 <div class="section" id="faq">
   <div class="section-title">Frequently Asked Questions</div>
   <div class="section-sub">Common questions about the clinic and your health.</div>
@@ -632,9 +651,8 @@ footer span { color: #a5d6a7; font-weight: 600; }
   <div class="grid">
 
     <div class="card">
-      <div class="card-icon">🆘</div>
-      <div class="badge">Quick Help</div>
       <h3>What should I do in an emergency?</h3>
+      <div class="badge">Quick Help</div>
       <div class="faq-q">Q: I feel very ill or injured on campus. What do I do?</div>
       <p class="faq-a">Go directly to the PSAU Infirmary or call <strong>0912-345-6789</strong>. For life threatening emergencies, call the national emergency line (911). Inform your teacher or a nearby staff member immediately.</p>
       <hr class="divider">
@@ -643,9 +661,8 @@ footer span { color: #a5d6a7; font-weight: 600; }
     </div>
 
     <div class="card">
-      <div class="card-icon">📖</div>
-      <div class="badge">Medicine Use</div>
       <h3>Proper Use of Medicine</h3>
+      <div class="badge">Medicine Use</div>
       <div class="faq-q">Q: Can I get medicines from the clinic for free?</div>
       <p class="faq-a">Yes, the infirmary provides basic medicines to enrolled PSAU students and staff at no charge, subject to availability.</p>
       <hr class="divider">
@@ -654,9 +671,8 @@ footer span { color: #a5d6a7; font-weight: 600; }
     </div>
 
     <div class="card">
-      <div class="card-icon">⚠️</div>
-      <div class="badge">Warnings</div>
       <h3>Medicine Warnings</h3>
+      <div class="badge">Warnings</div>
       <div class="faq-q">Q: What are common medicine side effects to watch for?</div>
       <p class="faq-a">Watch for rashes, difficulty breathing, severe stomach pain, or unusual swelling. These may indicate an allergic reaction — stop the medicine and seek help immediately.</p>
       <hr class="divider">
@@ -665,9 +681,8 @@ footer span { color: #a5d6a7; font-weight: 600; }
     </div>
 
     <div class="card">
-      <div class="card-icon">🩺</div>
+      <h3>When To Seek Medical Help?</h3>
       <div class="badge">Seek Help</div>
-      <h3>When To Seek Medical Help</h3>
       <div class="faq-q">Q: My fever has lasted 3 days. Should I see a doctor?</div>
       <p class="faq-a">Yes. A fever lasting more than 3 days, or one that is 38.5°C or higher, warrants a medical consultation. It could be a sign of infection requiring proper treatment.</p>
       <hr class="divider">
@@ -678,7 +693,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   </div>
 </div>
 
-<!-- ══ CONTACT ══ -->
 <div class="section" id="contact">
   <div class="section-title">Contact Information</div>
   <div class="section-sub">Reach us or go to our location inside the campus.</div>
@@ -686,7 +700,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   <div class="grid">
 
     <div class="card">
-      <div class="card-icon">📍</div>
       <h3>Location</h3>
       <p>PSAU Infirmary, located inside <strong>Pampanga State Agricultural University</strong>, Magalang, Pampanga.</p>
       <div class="map-container">
@@ -695,24 +708,20 @@ footer span { color: #a5d6a7; font-weight: 600; }
     </div>
 
     <div class="card">
-      <div class="card-icon">📞</div>
       <h3>Contact To Connect With Us</h3>
       <div class="contact-item">
-        <div class="contact-icon">📱</div>
         <div>
           <div class="contact-label">Mobile / Emergency</div>
-          <div class="contact-value">0912-345-6789</div>
+          <div class="contact-value">0965-876-8974</div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon">📧</div>
         <div>
           <div class="contact-label">Email</div>
           <div class="contact-value">MediCure@gmail.com</div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon">🏛️</div>
         <div>
           <div class="contact-label">University</div>
           <div class="contact-value">Pampanga State Agricultural University</div>
@@ -721,7 +730,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
     </div>
 
     <div class="card">
-      <div class="card-icon">🕐</div>
       <h3>Office Hours</h3>
       <div class="hours-row"><span class="day">Monday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
       <div class="hours-row"><span class="day">Tuesday</span><span class="hours-open">7:00 AM – 6:00 PM</span></div>
@@ -742,34 +750,117 @@ footer span { color: #a5d6a7; font-weight: 600; }
 
 <script>
 const medicineData = {
-  "Ambroxol":       { use: "Used for cough with mucus. Helps loosen and clear mucus from the airways.", warning: "Take with food. Not recommended for children under 2 without doctor's advice.", category: "Respiratory" },
-  "Amoxicillin":    { use: "Antibiotic used to treat bacterial infections such as ear, nose, throat, and urinary tract infections.", warning: "Always finish the full course. Do not stop even if you feel better.", category: "Antibiotic" },
-  "Band Aid":       { use: "Used to cover and protect small wounds, cuts, and blisters from dirt and bacteria.", warning: "Change daily or when wet/dirty. Clean wound before applying.", category: "First Aid" },
-  "Betadine":       { use: "Antiseptic solution used to clean wounds and prevent infection in cuts, scrapes, and burns.", warning: "Do not use inside deep wounds. Avoid contact with eyes.", category: "First Aid" },
-  "Biogesic":       { use: "Used for relief of mild to moderate fever and pain such as headache and toothache. Contains Paracetamol.", warning: "Do not exceed 4g (8 tablets) per day. Avoid with alcohol.", category: "Pain / Fever" },
-  "Cetirizine":     { use: "Antihistamine used to relieve allergy symptoms such as runny nose, sneezing, and itchy eyes.", warning: "May cause drowsiness. Avoid driving or operating machinery after taking.", category: "Allergy" },
-  "Efficascent Oil":{ use: "Topical oil used for muscle pain, body aches, arthritis, and minor sprains.", warning: "For external use only. Avoid contact with eyes and open wounds.", category: "Pain Relief" },
-  "Ibuprofen":      { use: "NSAID used to relieve pain, reduce fever, and reduce inflammation. Common for headache and muscle pain.", warning: "Take with food to avoid stomach irritation. Do not combine with Mefenamic Acid.", category: "Pain / Anti-inflammatory" },
-  "Loperamide":     { use: "Used to treat acute and chronic diarrhea by slowing down gut movement.", warning: "Do not use if diarrhea contains blood. Seek help if symptoms persist beyond 2 days.", category: "Digestive" },
-  "Losartan Potassium": { use: "Used to treat high blood pressure (hypertension) and protect kidneys in diabetic patients.", warning: "Requires a doctor's prescription. Do not stop taking without consulting your doctor.", category: "Cardiovascular" },
-  "Medical Tape":   { use: "Used to secure bandages, gauze, and dressings in place over wounds.", warning: "Some people are sensitive to adhesive. Use hypoallergenic tape if skin irritation occurs.", category: "First Aid" },
-  "Medicol":        { use: "Used for headache, toothache, and mild body pain. Contains Ibuprofen.", warning: "Take with food. Do not take with other NSAIDs. Avoid in people with stomach ulcers.", category: "Pain Relief" },
-  "Mefenamic Acid": { use: "NSAID used for short-term relief of mild to moderate pain, including menstrual cramps and muscle pain.", warning: "Take with food. Do not combine with Ibuprofen. Use for no more than 7 days.", category: "Pain Relief" },
-  "Neozep":         { use: "Used to relieve symptoms of colds and flu: headache, fever, runny nose, and nasal congestion.", warning: "May cause drowsiness. Contains antihistamine — avoid operating heavy machinery.", category: "Cold & Flu" },
-  "Antihistamine":  { use: "Used to treat and prevent allergic reactions including rashes, hives, and itching.", warning: "Causes drowsiness in most patients. Avoid alcohol while taking this medicine.", category: "Allergy" }
+  "Ambroxol":       {
+    use: "Used for cough with mucus. Helps loosen and clear mucus from the airways.",
+    warning: "Take with food. Not recommended for children under 2 without doctor's advice.",
+    category: "Respiratory",
+    image: "images/Ambroxol1.png",
+    imageAlt: "Ambroxol syrup bottle"
+  },
+  "Amoxicillin":    {
+    use: "Antibiotic used to treat bacterial infections such as ear, nose, throat, and urinary tract infections.",
+    warning: "Always finish the full course. Do not stop even if you feel better.",
+    category: "Antibiotic",
+    image: "images/Amoxicillin1.png",
+    imageAlt: "Amoxicillin capsules"
+  },
+  "Antihistamine":  {
+    use: "Used to treat and prevent allergic reactions including rashes, hives, and itching.",
+    warning: "Causes drowsiness in most patients. Avoid alcohol while taking this medicine.",
+    category: "Allergy",
+    image: "images/Antihistamine1.png",
+    imageAlt: "Antihistamine tablets"
+  },
+  "Band Aid":       {
+    use: "Used to cover and protect small wounds, cuts, and blisters from dirt and bacteria.",
+    warning: "Change daily or when wet/dirty. Clean wound before applying.",
+    category: "First Aid",
+    image: "images/Band Aid1.png",
+    imageAlt: "Adhesive bandages"
+  },
+  "Betadine":       {
+    use: "Antiseptic solution used to clean wounds and prevent infection in cuts, scrapes, and burns.",
+    warning: "Do not use inside deep wounds. Avoid contact with eyes.",
+    category: "First Aid",
+    image: "images/Betadine1.png",
+    imageAlt: "Betadine antiseptic bottle"
+  },
+  "Biogesic":       {
+    use: "Used for relief of mild to moderate fever and pain such as headache and toothache. Contains Paracetamol.",
+    warning: "Do not exceed 4g (8 tablets) per day. Avoid with alcohol.",
+    category: "Pain / Fever",
+    image: "images/Biogesic1.png",
+    imageAlt: "Paracetamol tablets (Biogesic)"
+  },
+  "Cetirizine":     {
+    use: "Antihistamine used to relieve allergy symptoms such as runny nose, sneezing, and itchy eyes.",
+    warning: "May cause drowsiness. Avoid driving or operating machinery after taking.",
+    category: "Allergy",
+    image: "images/Cetirizine1.png",
+    imageAlt: "Cetirizine 10mg tablets"
+  },
+  "Efficascent Oil":{ 
+    use: "Topical oil used for muscle pain, body aches, arthritis, and minor sprains.",
+    warning: "For external use only. Avoid contact with eyes and open wounds.",
+    category: "Pain Relief",
+    image: "images/Efficascent Oil1.png",
+    imageAlt: "Topical pain relief oil"
+  },
+  "Ibuprofen Medicol":{
+    use: "Used for headache, toothache, relieve body pain, reduce fever, and reduce inflammation. Common for headache and muscle pain.",
+    warning: "Take with food to avoid stomach irritation. Do not combine with Mefenamic Acid.",
+    category: "Pain Relief / Anti-inflammatory",
+    image: "images/Ibuprofen Medicol1.png",
+    imageAlt: "Ibuprofen tablets"
+  },
+  "Loperamide":     {
+    use: "Used to treat acute and chronic diarrhea by slowing down gut movement.",
+    warning: "Do not use if diarrhea contains blood. Seek help if symptoms persist beyond 2 days.",
+    category: "Digestive",
+    image: "images/Loperamide1.png",
+    imageAlt: "Loperamide capsules"
+  },
+  "Losartan Potassium": {
+    use: "Used to treat high blood pressure (hypertension) and protect kidneys in diabetic patients.",
+    warning: "Requires a doctor's prescription. Do not stop taking without consulting your doctor.",
+    category: "Cardiovascular",
+    image: "images/Losartan Potassium1.png",
+    imageAlt: "Losartan potassium tablets"
+  },
+  "Medical Tape":   {
+    use: "Used to secure bandages, gauze, and dressings in place over wounds.",
+    warning: "Some people are sensitive to adhesive. Use hypoallergenic tape if skin irritation occurs.",
+    category: "First Aid",
+    image: "images/Medical Tape1.png",
+    imageAlt: "Medical adhesive tape roll"
+  },
+  "Mefenamic Acid": {
+    use: "NSAID used for short-term relief of mild to moderate pain, including menstrual cramps and muscle pain.",
+    warning: "Take with food. Do not combine with Ibuprofen. Use for no more than 7 days.",
+    category: "Pain Relief",
+    image: "images/Mefenamic Acid1.png",
+    imageAlt: "Mefenamic acid capsules"
+  },
+  "Neozep":         {
+    use: "Used to relieve symptoms of colds and flu: headache, fever, runny nose, and nasal congestion.",
+    warning: "May cause drowsiness. Contains antihistamine — avoid operating heavy machinery.",
+    category: "Cold & Flu",
+    image: "images/Neozep1.png",
+    imageAlt: "Cold and flu relief tablets"
+  }
 };
 
-const categoryColors = {
-  "Antibiotic": "#fff3e0",
-  "Respiratory": "#e3f2fd",
-  "First Aid": "#fce4ec",
-  "Pain / Fever": "#f3e5f5",
-  "Pain Relief": "#ede7f6",
-  "Pain / Anti-inflammatory": "#ede7f6",
-  "Allergy": "#e8f5e9",
-  "Digestive": "#fff8e1",
-  "Cardiovascular": "#ffebee",
-  "Cold & Flu": "#e1f5fe"
+const categoryEmoji = {
+  "Respiratory": "🫁",
+  "Antibiotic": "💊",
+  "Allergy": "🌿",
+  "First Aid": "🩹",
+  "Pain / Fever": "🌡️",
+  "Pain Relief": "💆",
+  "Pain Relief / Anti-inflammatory": "🔵",
+  "Digestive": "🫙",
+  "Cardiovascular": "❤️",
+  "Cold & Flu": "🤧"
 };
 
 function loadMedicines(filter = "") {
@@ -794,9 +885,29 @@ function showMedicine(name, btn) {
   document.querySelectorAll(".medicine-list button").forEach(b => b.classList.remove("selected"));
   if (btn) btn.classList.add("selected");
   const m = medicineData[name];
+  const emoji = categoryEmoji[m.category] || "💊";
+
+  const imgId = "med-img-" + Date.now();
+  const imgHTML = m.image
+    ? `<div class="med-image-wrap">
+        <img id="${imgId}" src="${m.image}" alt="${m.imageAlt}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="med-img-fallback" style="display:none;">
+          <div class="fallback-icon">${emoji}</div>
+          <div>Image not available</div>
+        </div>
+      </div>`
+    : `<div class="med-image-wrap">
+        <div class="med-img-fallback">
+          <div class="fallback-icon">${emoji}</div>
+          <div>No image available</div>
+        </div>
+      </div>`;
+
   document.getElementById("medicineDetails").innerHTML = `
-    <div class="med-detail-name">💊 ${name}</div>
+    <div class="med-detail-name">${name}</div>
     <span class="badge">${m.category}</span>
+    ${imgHTML}
     <hr class="divider">
     <div class="faq-q">What it's used for:</div>
     <p class="med-detail-text">${m.use}</p>
