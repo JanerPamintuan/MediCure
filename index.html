@@ -96,7 +96,6 @@ header {
   padding: 3px;
 }
 
-/* FIXED: changed .dark-btn .knob selector to match span instead of div */
 .dark-btn .knob {
   width: 24px;
   height: 24px;
@@ -503,7 +502,6 @@ footer span { color: #a5d6a7; font-weight: 600; }
   <img src="MediCure.png" alt="MediCure Logo" class="logo">
   <div class="header-inner">
     <div></div>
-    <!-- FIXED: changed <div class="knob"> to <span class="knob"> — div is not valid inside button -->
     <button class="dark-btn" onclick="toggleDarkMode()" title="Toggle dark mode">
       <span class="knob" id="knobIcon">☀️</span>
     </button>
