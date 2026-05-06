@@ -9,7 +9,7 @@
 <style>
 
 :root {
-  --green-dark: #1b5e20;
+  --green-dark: #1ca847;
   --green-mid: #2e7d32;
   --green-light: #4caf50;
   --green-pale: #e8f5e9;
@@ -17,7 +17,7 @@
   --accent: #a5d6a7;
   --text: #1a2e1b;
   --text-muted: #4a6b4c;
-  --bg: #ffffff;
+  --bg: #1ca847;
   --card-bg: #ffffff;
   --border: #d4e8d4;
   --shadow: 0 4px 24px rgba(27,94,32,0.08);
@@ -61,11 +61,14 @@ body {
 a { text-decoration: none; color: inherit; }
 
 header {
-  background: linear-gradient(135deg, var(--white) 0%, var(--white) 55%, var(--white) 100%);
-  padding: 28px 24px 22px;
+  padding: 20px;
+  margin: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: #ffffff;
+  border: none;
+  outline: none;
 }
 
 .header-inner {
@@ -76,7 +79,7 @@ header {
 }
 
 .logo,.logo1,.logo2,.logo3,.logo4,.logo5,.logo6,.logo7,.logo8,.logo9,.logo10,.logo11,.logo12,.logo13,.logo14,.logo15{
-  width:1000px;max-width:100%;height:250px;border-radius:30px;padding-top:30px;
+  width: 100%;max-width:120%;height:300px;padding-top:0px;
 }
 
 .dark-btn {
@@ -152,7 +155,7 @@ nav button.nav-active {
 .section-title {
   font-family: 'DM Serif Display', serif;
   font-size: 1.9rem;
-  color: var(--green-dark);
+  color: #1ca847;
   margin-bottom: 6px;
 }
 
@@ -439,7 +442,7 @@ nav button.nav-active {
 .contact-value { font-size: 0.92rem; font-weight: 500; color: var(--text); }
 
 .hero-band {
-  background: linear-gradient(135deg, #1ca847, #1ca847);
+  background: linear-gradient(135deg, #f68c11);
   border-radius: var(--radius);
   padding: 30px 28px;
   color: #fff;
@@ -473,7 +476,7 @@ nav button.nav-active {
 }
 
 footer {
-  background: var(--footer-bg);
+  background: #1ca847;
   color: rgba(255,255,255,0.8);
   text-align: center;
   padding: 20px;
@@ -500,7 +503,7 @@ footer span { color: #a5d6a7; font-weight: 600; }
 
 <header>
   <h1 style="display:none;">MediCure Infirmary System</h1>
-  <img src="images/Medicures.png" alt="" class="logo">
+  <img src="images/Medicure3.jpg" alt="" class="logo">
   <div class="header-inner">
     <div></div>
     <button class="dark-btn" onclick="toggleDarkMode()" title="Toggle dark mode">
